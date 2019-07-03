@@ -5,7 +5,10 @@ class Buttons extends Component {
      constructor(props) {
           super(props);
 
-          this.state = {};
+          this.state = {
+               text: 'Klik!',
+               style: {}
+          };
      }
 
      handleOnClickOne = e => {
@@ -13,14 +16,17 @@ class Buttons extends Component {
      };
 
      handleOnClickTwo = e => {
-          console.log(this);
-          const button = document.querySelector('button:nth-child(2)');
-          button.textContent = 'Click';
+          this.setState({
+               text: this.state.text === 'Klik!' ? 'Click' : 'Klik!'
+          });
      };
 
      handleOnClickThree = e => {
-          const button = document.querySelector('button:last-child');
-          button.style.width = '300px';
+          this.setState({
+               style: {
+                    width: '300px'
+               }
+          });
      };
      render() {
           return (
@@ -29,7 +35,11 @@ class Buttons extends Component {
                     <button onClick={this.handleOnClickTwo}>
                          {this.state.text}!
                     </button>
-                    <button onClick={this.handleOnClickThree}>Klik!</button>
+                    <button
+                         style={this.state.style}
+                         onClick={this.handleOnClickThree}>
+                         Klik!
+                    </button>
                </>
           );
      }
