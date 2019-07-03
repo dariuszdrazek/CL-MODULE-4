@@ -1,12 +1,25 @@
-import React from "react";
-import ReactDOM from "react-dom";
+import ReactDOM from 'react-dom';
+import React, { Component } from 'react';
 
+class ButtonTest extends Component {
+     handleOnMove() {
+          console.log('Najechano na przycisk');
+     }
+     render() {
+          return (
+               <div>
+                    <button onMouseEnter={this.handleOnMove}>Test</button>
+               </div>
+          );
+     }
+}
 
+class App extends Component {
+     render() {
+          return <ButtonTest />;
+     }
+}
 
-
-/**
- * Nie modyfikujcie kodu poniżej
- */
-ReactDOM.render(<App />, document.getElementById("app"));
+ReactDOM.render(<App />, document.getElementById('app'));
 
 export { ButtonTest, App };
