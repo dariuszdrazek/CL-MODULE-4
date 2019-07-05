@@ -31,14 +31,16 @@ class Buttons extends Component {
      render() {
           return (
                <>
-                    <button onClick={this.handleOnClickOne}>Klik!</button>
+                    <button onClick={this.handleOnClickOne}>
+                         {this.state.text}
+                    </button>
                     <button onClick={this.handleOnClickTwo}>
                          {this.state.text}!
                     </button>
                     <button
                          style={this.state.style}
                          onClick={this.handleOnClickThree}>
-                         Klik!
+                         {this.state.text}
                     </button>
                </>
           );

@@ -2,9 +2,9 @@ import ReactDOM from 'react-dom';
 import React, { Component } from 'react';
 
 class ButtonTest extends Component {
-     handleOnMove() {
+     handleOnMove = () => {
           console.log('Najechano na przycisk');
-     }
+     };
      render() {
           return (
                <div>

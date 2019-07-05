@@ -80,31 +80,6 @@ class CLockDateYear extends Component {
 
 class CLockDateMonth extends Component {
      render() {
-          // let month = '';
-          // switch (this.state.month) {
-          //      case 1:
-          //           month = 'styczeń';
-          //           break;
-          //      case 2:
-          //           month = 'luty';
-          //           break;
-          //      case 3:
-          //           month = 'marzec';
-          //           break;
-          //      case 4:
-          //           month = 'kwiecień';
-          //           break;
-          //      case 5:
-          //           month = 'maj';
-          //           break;
-          //      case 6:
-          //           month = 'czerwiec';
-          //           break;
-          //      case 7:
-          //           month = 'lipiec';
-          //           break;
-          // }
-
           const months = ['sty', 'lut', 'mar', 'kw', 'maj', 'cze', 'lip'];
 
           return (

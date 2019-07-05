@@ -11,12 +11,14 @@ class CrazyDiv extends Component {
           };
      }
 
-     handleMouseEnter = e => {
-          let randomNumber = Math.floor(Math.random() * 1001);
+     randomNumber() {
+          return Math.floor(Math.random() * 1001) + 'px';
+     }
 
+     handleMouseEnter = e => {
           this.setState({
-               left: randomNumber,
-               top: randomNumber
+               left: this.randomNumber(),
+               top: this.randomNumber()
           });
      };
 
@@ -26,8 +28,7 @@ class CrazyDiv extends Component {
                width: '100px',
                position: 'absolute',
                backgroundColor: 'red',
-               top: this.state.top,
-               left: this.state.left
+               ...this.state
           };
           return <div style={style} onMouseEnter={this.handleMouseEnter} />;
      }

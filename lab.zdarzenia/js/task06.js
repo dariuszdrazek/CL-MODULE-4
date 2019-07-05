@@ -7,7 +7,8 @@ class MobileMenu extends Component {
 
           this.state = {
                display: 'none',
-               display2: 'block'
+               display2: 'block',
+               isToggle: false
           };
      }
      handleClick = () => {

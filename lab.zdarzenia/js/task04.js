@@ -1,51 +1,39 @@
+import React from 'react';
 import ReactDOM from 'react-dom';
-import React, { Component } from 'react';
 
-class EnterAndLeave extends Component {
+class EnterAndLeave extends React.Component {
      constructor(props) {
           super(props);
-
-          this.state = {
-               width: '400px',
-               backgroundColor: '#0f0'
+          this.defaultState = {
+               backgroundColor: 'green',
+               height: '500px'
           };
+
+          this.state = { ...this.defaultState };
      }
 
-     handleMouseEnter = () => {
+     handleEnter() {
           this.setState({
-               width: '500px',
-               backgroundColor: '#00f'
+               backgroundColor: 'blue',
+               height: '400px'
           });
-     };
+     }
 
-     handleMouseLeave = () => {
+     handleLeave() {
           this.setState({
-               width: '400px',
-               backgroundColor: '#0f0'
+               ...this.defaultState
           });
-     };
+     }
 
      render() {
-          const style = {
-               width: this.state.width,
-               height: '500px',
-               backgroundColor: this.state.backgroundColor
-          };
-
           return (
                <div
-                    style={style}
-                    onMouseEnter={this.handleMouseEnter}
-                    onMouseLeave={this.handleMouseLeave}
+                    style={{ ...this.state, width: '100px' }}
+                    onMouseEnter={() => this.handleEnter()}
+                    onMouseLeave={() => this.handleLeave()}
                />
           );
      }
 }
 
-function App() {
-     return <EnterAndLeave />;
-}
-
-ReactDOM.render(<App />, document.getElementById('app'));
-
-export { App, EnterAndLeave };
+ReactDOM.render(<EnterAndLeave />, document.getElementById('root'));
