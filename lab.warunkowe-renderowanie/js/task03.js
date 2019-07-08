@@ -1,13 +1,55 @@
-import React from "react";
-import ReactDOM from "react-dom";
+import ReactDOM from 'react-dom';
+import React, { Component } from 'react';
 
+class NumberInfo extends Component {
+     constructor(props) {
+          super(props);
 
+          this.state = {};
+     }
 
+     primeNumbers = num => {
+          if (num < 2) return false;
+          for (var i = 2; i < num; i++) {
+               if (num % i == 0) return false;
+          }
+          return true;
+     };
 
-/**
- * Nie modyfikujcie kodu poniżej
- */
+     render() {
+          return (
+               <>
+                    <li>{this.props.number}</li>
+                    <li>
+                         {this.props.number % 2 === 0
+                              ? 'parzysta'
+                              : 'nieparzysta'}
+                    </li>
 
-ReactDOM.render(<App />, document.getElementById("app"));
+                    {() =>
+                         this.primeNumbers(this.props.number) ? (
+                              <li>liczba pierwsza</li>
+                         ) : null
+                    }
+
+                    {Math.pow(this.props.number, 2) % 2 === 0 ? (
+                         <li>'potęga liczby 2'</li>
+                    ) : null}
+               </>
+          );
+     }
+}
+
+class App extends Component {
+     render() {
+          return (
+               <>
+                    <NumberInfo number={16} />
+               </>
+          );
+     }
+}
+
+ReactDOM.render(<App />, document.getElementById('app'));
 
 export { App, NumberInfo };

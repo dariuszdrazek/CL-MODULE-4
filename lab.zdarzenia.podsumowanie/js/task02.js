@@ -1,48 +1,72 @@
+import React from 'react';
 import ReactDOM from 'react-dom';
-import React, { Component } from 'react';
 
-class ProductTraingle extends Component {
+class ProductTriangle extends React.Component {
      constructor(props) {
           super(props);
-
           this.state = {
-               buttons: ['dobrze', 'szybko', 'tanio'],
-               backgroundColor: 'grey'
+               activeButtons: []
           };
      }
 
-     handleClick = () => {
+     selectButton(i) {
+          const tempButtons = [...this.state.activeButtons];
+
+          if (this.state.activeButtons.length > 1) {
+               tempButtons.shift();
+          }
+
+          tempButtons.push(i);
+
           this.setState({
-               backgroundColor:
-                    this.state.backgroundColor === 'grey' ? 'green' : 'grey'
+               activeButtons: tempButtons
           });
-     };
+     }
 
      render() {
+          const style = {
+               backgroundColor: 'green'
+          };
+
           return (
-               <div>
-                    {this.state.buttons.map((button, index) => {
-                         return (
-                              <button
-                                   onClick={this.handleClick}
-                                   key={index}
-                                   style={{
-                                        backgroundColor: this.state
-                                             .backgroundColor
-                                   }}>
-                                   {button}
-                              </button>
-                         );
-                    })}
-               </div>
+               <>
+                    <button
+                         style={
+                              this.state.activeButtons.indexOf(1) !== -1
+                                   ? style
+                                   : null
+                         }
+                         onClick={() => this.selectButton(1)}>
+                         Dobrze
+                    </button>
+                    <button
+                         style={
+                              this.state.activeButtons.indexOf(2) !== -1
+                                   ? style
+                                   : null
+                         }
+                         onClick={() => this.selectButton(2)}>
+                         Szybko
+                    </button>
+                    <button
+                         style={
+                              this.state.activeButtons.indexOf(3) !== -1
+                                   ? style
+                                   : null
+                         }
+                         onClick={() => this.selectButton(3)}>
+                         Tanio
+                    </button>
+               </>
           );
      }
 }
 
-function App() {
-     return <ProductTraingle />;
+class App extends React.Component {
+     render() {
+          return <ProductTriangle />;
+     }
 }
 
-ReactDOM.render(<App />, document.getElementById('app'));
-
-export { ProductTraingle, App };
+const rootElement = document.getElementById('app');
+ReactDOM.render(<App />, rootElement);
