@@ -11,8 +11,7 @@ class Sum extends Component {
      }
 
      handleClick = () => {
-          const numbers = [...this.state.numbers];
-          numbers.push(this.input.value);
+          const numbers = [...this.state.numbers, this.input.value];
           this.setState({
                numbers: numbers
           });
