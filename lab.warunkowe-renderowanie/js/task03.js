@@ -26,11 +26,9 @@ class NumberInfo extends Component {
                               : 'nieparzysta'}
                     </li>
 
-                    {() =>
-                         this.primeNumbers(this.props.number) ? (
-                              <li>liczba pierwsza</li>
-                         ) : null
-                    }
+                    {this.primeNumbers(this.props.number) ? (
+                         <li>liczba pierwsza</li>
+                    ) : null}
 
                     {Math.pow(this.props.number, 2) % 2 === 0 ? (
                          <li>'potęga liczby 2'</li>
@@ -44,7 +42,7 @@ class App extends Component {
      render() {
           return (
                <>
-                    <NumberInfo number={16} />
+                    <NumberInfo number={7} />
                </>
           );
      }
