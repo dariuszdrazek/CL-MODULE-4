@@ -1,7 +1,7 @@
 const path = require('path');
 
 module.exports = {
-     entry: './js/task.js',
+     entry: './js/task02.js',
      output: {
           filename: 'out.js',
           path: path.resolve(__dirname, 'build')
@@ -26,6 +26,12 @@ module.exports = {
                               presets: [
                                    '@babel/preset-env',
                                    '@babel/preset-react'
+                              ],
+                              plugins: [
+                                   [
+                                        '@babel/plugin-proposal-class-properties',
+                                        { loose: true }
+                                   ]
                               ]
                          }
                     }
