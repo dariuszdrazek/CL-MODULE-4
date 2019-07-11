@@ -13,7 +13,7 @@ class Sum extends Component {
      handleClick = () => {
           const numbers = [...this.state.numbers, this.input.value];
           this.setState({
-               numbers: numbers
+               numbers
           });
      };
 
@@ -22,7 +22,7 @@ class Sum extends Component {
                return null;
           } else {
                return this.state.numbers.reduce(
-                    (prev, curr) => parseFloat(prev) + parseFloat(curr)
+                    (prev, curr) => Number(prev) + Number(curr)
                );
           }
      };

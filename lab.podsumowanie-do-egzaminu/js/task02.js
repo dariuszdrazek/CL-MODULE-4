@@ -7,8 +7,7 @@ class ToDo extends Component {
 
           this.state = {
                tasks: [],
-               value: '',
-               backgroundColor: ''
+               value: ''
           };
      }
 
@@ -21,7 +20,7 @@ class ToDo extends Component {
           const tasks = [...this.state.tasks, task];
 
           this.setState({
-               tasks: tasks,
+               tasks,
                value: ''
           });
      };
@@ -33,11 +32,17 @@ class ToDo extends Component {
      };
 
      handleClick = (e, index) => {
-          const tasks = [...this.state.tasks];
-          tasks[index].done = false;
-          this.setState({
-               tasks: tasks
-          });
+          let idx = index;
+          this.setState(prevState => ({
+               tasks: prevState.tasks.map((el, i) =>
+                    i === idx
+                         ? {
+                                ...el,
+                                done: !prevState.tasks[i].done
+                           }
+                         : el
+               )
+          }));
      };
      render() {
           return (
@@ -51,6 +56,7 @@ class ToDo extends Component {
                          tasks={this.state.tasks}
                          handleClick={this.handleClick}
                          item={this.state.tasks}
+                         className={this.state.className}
                     />
                </div>
           );
@@ -84,12 +90,7 @@ class ToDoList extends Component {
                                         onClick={e =>
                                              this.props.handleClick(e, index)
                                         }
-                                        style={{
-                                             backgroundColor:
-                                                  this.props.item.done == false
-                                                       ? 'red'
-                                                       : 'green'
-                                        }}>
+                                        className={item.done ? 'done' : null}>
                                         {item.name}
                                    </li>
                               );

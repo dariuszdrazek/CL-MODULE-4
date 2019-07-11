@@ -25,10 +25,10 @@ class TextField extends Component {
                          <select
                               onChange={this.handleSelect}
                               value={this.state.option}>
-                              <option value="jeden">Opcja 1</option>
-                              <option value="dwa">Opcja 1</option>
-                              <option value="trzy">Opcja 1</option>
-                              <option value="cztery">Opcja 1</option>
+                              <option>Opcja 1</option>
+                              <option>Opcja 2</option>
+                              <option>Opcja 3</option>
+                              <option>Opcja 4</option>
                          </select>
                          <p>{this.state.option}</p>
                          <span>{this.state.textLength}</span>
