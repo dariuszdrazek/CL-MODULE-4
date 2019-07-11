@@ -5,7 +5,7 @@ class ParentComponent extends Component {
      render() {
           return (
                <>
-                    <ChildComponent text={this.props.text} />
+                    <ChildComponent>{this.props.children}</ChildComponent>
                </>
           );
      }
@@ -15,7 +15,9 @@ class ChildComponent extends Component {
      render() {
           return (
                <>
-                    <GrandchildComponent text={this.props.text} />
+                    <GrandchildComponent>
+                         {this.props.children}
+                    </GrandchildComponent>
                </>
           );
      }
@@ -23,15 +25,13 @@ class ChildComponent extends Component {
 
 class GrandchildComponent extends Component {
      render() {
-          return (
-               <>
-                    <h1>{this.props.text}</h1>
-               </>
-          );
+          return <>{this.props.children}</>;
      }
 }
 
 ReactDOM.render(
-     <ParentComponent text="To działa" />,
+     <ParentComponent>
+          <h1>To działa</h1>
+     </ParentComponent>,
      document.getElementById('app')
 );
